@@ -1,0 +1,11 @@
+<!--pages/battery/battery.wxml-->
+<view>
+  <view wx:if=""></view>
+  <view wx:else>
+    <view class='addBattery'>
+    <image src='../images/battery-orange.png' class="img"></image>
+    <view>您暂时没有电池</view>
+    <!-- <button class="btn" bindtap='addBattery'>添加电池</button> -->
+    </view>
+  </view>
+</view>

@@ -1,0 +1,108 @@
+<view class='map-view'>
+
+  <!-- <view class="products">
+    <navigator openType="navigateTo" url="{{user==''?'../login/login':'../menu/menu'}}" hover-class="none">
+      <i-icon type="other" size='34' style='margin-left:10px;' />
+    </navigator>
+    <navigator openType="navigateTo" url="cityLists/cityLists?currentCity={{currentCity}}" hover-class="none">
+      <view class="txt">{{currentCity}}
+        <i-icon type="unfold" size='22' />
+      </view>
+    </navigator>
+    <view class="xwss">
+
+      <i-icon type="message" size='28' class="xwss" bindtap='viewNews' />
+      <i-icon type="search" size='28' />
+    </view>
+  </view> -->
+  <!-- <view wx:if="{{user==''}}">
+    <view class="login">
+      <view class="loginTs">请登录使用换电服务</view>
+      <navigator open-type='navigateTo' url="../login/login" hover-class='none'>
+        <button class="loginBtn">登录</button>
+      </navigator>
+    </view>
+  </view> -->
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{hidden}}"></view>
+  <view class="modalDlg" wx:if="{{hidden}}">
+    <text class="modalText">需授权后，进入小程序！</text>
+    <button class="modalButton" size='default' open-type="getUserInfo" bindgetuserinfo="getUserInfo">确定 </button>
+  </view>
+  <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" show-location="true" markers="{{markers}}" bindmarkertap="makertap" bindtap="bindtap" bindregionchange="regionchange" circles="{{circles}}" polyline="{{polyline}}">
+
+    <cover-view class="products">
+      <navigator openType="navigateTo" url="{{!isLogin?'../login/login':'../menu/menu'}}" hover-class="none">
+        <cover-image class="other-img" src="../images/list.png" />
+      </navigator>
+      <navigator openType="navigateTo" url="cityLists/cityLists?currentCity={{currentCity}}" hover-class="none">
+        <cover-view class="city-choose">
+          <cover-view class="txt">{{currentCity}}
+          </cover-view>
+          <cover-image class="down-img" src="../images/down.png" />
+        </cover-view>
+      </navigator>
+      <cover-view class="xwss">
+        <cover-image class="search-img" src="../images/message.png" bindtap='viewNews' />
+        <navigator openType="navigateTo" url="search/search" hover-class="none">
+          <cover-image class="search-img" src="../images/icon_search.png" />
+        </navigator>
+      </cover-view>
+    </cover-view>
+
+    <cover-view wx:if="{{!isLogin}}">
+      <cover-view class="login">
+        <cover-view class="loginTs">请登录使用换电服务</cover-view>
+        <navigator open-type='navigateTo' url="../login/login" hover-class='none'>
+          <button class="loginBtn">登录</button>
+        </navigator>
+      </cover-view>
+    </cover-view>
+    <cover-view wx:if="{{deviceStatus}}" class="deviceStatus">
+      <cover-view>{{deviceStatus}}</cover-view>
+    </cover-view>
+    <cover-view class="{{dialog=='dialog'?'functionbox':'functionbox-un'}}">
+      <cover-view class="kf" bindtap='call'>
+        <cover-image class="kf-img" src="../images/kf.png" />
+
+      </cover-view>
+      <cover-view class="kf" bindtap='currentLocation'>
+        <cover-image class="kf-img" src="../images/dw.png" />
+      </cover-view>
+      <cover-view class="kf" bindtap='refresh'>
+        <cover-image class="refresh-img" src="../images/refresh.png" />
+      </cover-view>
+    </cover-view>
+
+    <cover-view class="{{dialog=='dialog'?'dialog':'dialog-un'}}">
+      <cover-view class='dialog-text'>
+        <cover-view class='device-name'>{{c_marker.title}}</cover-view>
+        <cover-view class='device-address'>
+          {{c_marker.address}}
+        </cover-view>
+        <cover-view class='device-address'>
+          距离当前位置：{{distance/1000}}km
+        </cover-view>
+      </cover-view>
+      <cover-view class='dialog-but'>
+        <cover-view class="but" bindtap='toNav'>
+          到这去
+        </cover-view>
+      </cover-view>
+    </cover-view>
+
+    <cover-view class="{{dialog=='dialog'?'ewm':'ewm-un'}}">
+      <cover-view class="scan" wx:if="{{dialog=='dialog'}}" bindtap='reserve'>
+        <cover-image class="img" src="../images/scancode-avtive.png" />
+        <cover-view class="smhd">预约换电</cover-view>
+      </cover-view>
+      <cover-view class="scan" wx:else bindtap='scanBattery'>
+        <cover-image class="img" src="../images/scancode-avtive.png" />
+        <cover-view class="smhd">扫码换电</cover-view>
+      </cover-view>
+    </cover-view>
+
+
+  </map>
+</view>
+<!-- <i-message id="message" /> -->
+<i-toast id="toast" />

@@ -1,0 +1,19 @@
+/* pages/settings/feedback/feedback.wxss */
+.aboutUs{
+   font-weight: 550;
+   font-size: 25px;
+   margin: 15px;
+}
+page {
+    background-color: rgb(245,245,245)
+}
+.tx{
+  background-color: #ffffff;
+  width: 90%;
+  margin: 20px;
+}
+.btn{
+  border-radius:40px;
+  color:#fff!important;
+  background:#19be6b!important;
+}

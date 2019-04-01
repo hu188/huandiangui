@@ -1,0 +1,47 @@
+<!--pages/taoCan/payTc/payTc.wxml-->
+<wxs module="price" src="../../../utils/common.wxs" />
+<view class="body">
+  <view class="name">套餐支付</view>
+  <view class="tcList">
+    <view class="tcName">{{selectGood.rechargeName}}</view>
+    <view class="content">
+      <text>￥{{price.price(selectGood.money)}}元</text>
+      <text class="time">{{selectGood.rechargeCount}}次/30天</text>
+    </view>
+  </view>
+  <view class="empty"></view>
+  <view>
+    <view class="yh">优惠</view>
+        <view class="section">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <view class="picker">
+            套餐优惠券：{{array[index]?array[index]:'请选择 >'}}
+          </view>
+        </picker>
+        </view>
+  </view>
+  <view class="empty"></view>
+  <view>
+      <radio-group bindchange="bindPaymentChange" >
+        <view class="payWay">
+            <view>
+              <i-icon type="transaction_fill" size="28" color="#80848f"/>
+              <text>微信支付</text>
+            </view>
+            <radio value="{{0}}" checked="{{item.checked}}" checked='{{true}}'/>
+        </view>
+        <view  class="payWay">
+            <view>
+              <i-icon type="financial_fill" size="28" color="#80848f"/>
+              <text>余额支付<text class="balance">(账户余额:{{price.price(balance)}})</text></text>
+            </view>
+            <radio value="{{1}}" checked="{{item.checked}}"/>
+        </view>
+      </radio-group>
+  </view>
+  <view class="cart">
+    <view class="money">￥{{price.price(selectGood.money)}}</view>
+    <button class="btn" bindtap='saveOrder'>立即支付</button>
+  </view>
+</view>
+<i-toast id="toast" />

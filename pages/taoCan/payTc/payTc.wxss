@@ -1,0 +1,88 @@
+/* pages/taoCan/payTc/payTc.wxss */
+
+.name{
+   font-weight: 550;
+   font-size: 25px;
+   margin-top: 15px;
+   margin-left: 20px;
+
+}
+.tcList{
+  margin-left: 20px;
+  margin-top: 15px;
+  width: 88%;
+  height: 150px;
+  background: rgb(251, 220, 6);
+  border-radius: 25px;
+  box-shadow:4px 4px 20px rgb(236, 234, 234);
+}
+ .tcName{
+  font-size: 24px;
+  color: #fff;
+  display: block;
+  padding: 25px;
+}
+.content{
+  font-size: 16px;
+  color: #fff;
+  display: block;
+  padding-left: 25px;
+}
+.time{
+  padding-left: 25px;
+}
+.empty{
+  background-color: rgb(245,245,245);
+  height: 10px;
+  margin-top: 10px;
+}
+.yh{
+   font-weight: 550;
+   font-size: 20px;
+   margin-top: 5px;
+   margin-left: 20px;
+}
+.cart{
+  height:9vh;
+  width:100%;
+  display:flex;
+  align-items:center;
+  position:fixed;
+  bottom:0px;
+  border-top:3px rgba(85, 85, 85, 0.11) solid; 
+}
+.btn{
+  width: 100px;
+  height: 40px;
+  background-color: rgba(255, 166, 0, 0.925);
+  color:#fff;
+  margin-right: 25px;
+}
+.money{
+  font-size: 25px;
+}
+.img{
+ width:22px;
+ height:22px;
+  margin-right: 3px;
+ display:inline-block;
+}
+.payWay{
+  height: 50px;
+  border-bottom: 1px rgba(2, 2, 2, 0.1) dashed ;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction:row;
+}
+.picker{
+  font-size: 15px;
+  margin-left: 25px;
+  color: #888;
+
+
+}
+.balance{
+  font-size: 12px;
+  color: rgba(85, 85, 85, 0.733)
+}

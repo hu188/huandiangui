@@ -1,0 +1,48 @@
+/* pages/serviceNetwork/cityService/cityService.wxss */
+.city-Name{
+  font-size: 28px;
+  margin: 20px;
+}
+.empty{
+  background-color:rgb(245,245,245);
+  height: 10px;
+}
+.car-img{
+width: 70px;
+height: 70px;
+margin: 15px;
+}
+.phone-img{
+width: 30px;
+height: 30px;
+margin: 15px;
+}
+.cars{
+  display: flex;
+  flex-direction: column;
+}
+.content{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  border-bottom: 1px #eee solid;
+}
+.content-left{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+.car-name{
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+.car-describe{
+  font-size: 15px;
+  color: #bbb;
+}
+.car-address{
+  font-size: 15px;
+  color: #bbb;
+  margin: 10px;
+}

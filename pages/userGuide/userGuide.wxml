@@ -1,0 +1,13 @@
+<!--pages/userGuide/userGuide.wxml-->
+<view>
+  <i-cell-group>
+    <i-cell title="绑定车辆" is-link url="../../../bindCar/bindCar"></i-cell>
+    <i-cell title="租电池" is-link url="rentBattery/rentBattery"></i-cell>
+    <i-cell title="换电池" is-link url="../../../replaceBattery/replaceBattery"></i-cell>
+    <i-cell title="退电池" is-link url="../../../returnBattery/returnBattery"></i-cell>
+    <i-cell title="套餐" is-link url="../../../taoCan/taoCan"></i-cell>
+    <i-cell title="充值" is-link url="../../../recharge/recharge"></i-cell>
+    <!-- <i-cell title="电动车" is-link url="../../../rechargeAgreement/rechargeAgreement"></i-cell> -->
+    <i-cell title="客服" is-link url="../../../customer/customer"></i-cell>
+  </i-cell-group>
+</view>

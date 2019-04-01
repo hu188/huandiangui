@@ -1,0 +1,35 @@
+<wxs module="price" src="../../../utils/common.wxs" />
+<view class="wallet">
+  <view class="wdqb">我的钱包</view>
+  <navigator openType="navigateTo" url="../order/order" hover-class="none">
+    <view class="mx">明细</view>
+  </navigator>
+</view>
+<view class="zhye">
+  账号余额(元)
+</view>
+<view class="zhye_1">
+  ￥{{price.price(balance)}}
+</view>
+<view>
+  <navigator openType="navigateTo" url="../recharge/recharge" hover-class="none">
+    <view class="smgw">
+      充值
+    </view>
+  </navigator>
+</view>
+
+<view class="coupon" bindtap='viewCounpon'>
+  <view class="yhq" style="border-right: 1px #fff dashed;">优惠券</view>
+  <i-icon type="enter"  size="28"/>
+</view>
+
+<view class="refund" bindtap='refund'>
+  <view class="yhq">押金退还</view>
+  <i-icon type="enter"  size="28"/>
+</view>
+<!-- <navigator openType="navigateTo" url="../coupon/coupon">
+    <view class="yhq">
+      优惠券
+    </view>
+</navigator> -->

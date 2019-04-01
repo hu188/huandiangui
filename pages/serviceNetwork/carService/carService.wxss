@@ -1,0 +1,38 @@
+/* pages/serviceNetwork/serviceNetwork.wxss */
+.body{
+  margin: 20px;
+}
+.name{
+   font-weight: 550;
+   font-size: 25px;
+}
+.txt{
+  margin-top: 20px;
+  line-height: 30px;
+  color: #464646
+}
+.img{
+  width:80px;
+  height: 68px;
+}
+.city{
+  /* border:1px #000 solid; */
+  width:100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow:5px 5px 20px rgb(233, 227, 227);
+  border-radius: 10px;
+
+
+}
+.distance{
+  margin-top: 20px;
+  margin-right: 8px;
+}
+.cityList{
+  display: flex;
+  width: 100%;
+  flex-wrap:wrap;
+
+}

@@ -1,0 +1,27 @@
+/* pages/serviceNetwork/serviceNetwork.wxss */
+.body{
+  margin: 20px;
+}
+.name{
+   font-weight: 550;
+   font-size: 25px;
+  
+}
+.img{
+  width:80px;
+  height: 80px;
+  margin-right: 40px;
+}
+.flex-service{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 120px;
+  border-radius: 20px;
+  box-shadow:5px 5px 40px rgb(233, 227, 227);
+   margin-top: 25px;
+}
+.txt{
+  color: #464646
+}

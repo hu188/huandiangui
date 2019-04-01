@@ -1,0 +1,23 @@
+<!--绑定输入事件-->
+<!-- <input style="border:1px solid black;" bindinput="getsuggest" ></input> -->
+<view class='page_row'>
+  <view class="search">
+    <view class="df search_arr">
+      <icon class="searchcion" size='20' type='search'></icon>
+      <input placeholder="请输入关键字" bindinput="getsuggest" />
+    </view>
+  </view>
+  <navigator openType="navigateTo" url="../map" hover-class="none">
+    <view class='sousuo'>取消</view>
+  </navigator>
+</view>
+<!--关键词输入提示列表渲染-->
+<view wx:for="{{suggestion}}" wx:key="index" style='margin-left:10px;'>
+  <view class="record" bindtap="chooseAddress">
+    <!--根据需求渲染相应数据-->
+    <!--渲染地址title-->
+    <view class="title" id="{{index}}">{{item.title}}</view>
+    <!--渲染详细地址-->
+    <view class="address">{{item.addr}}</view>
+  </view>
+</view>

@@ -1,0 +1,25 @@
+<!--pages/taoCan/taoCan.wxml-->
+
+<view class="body">
+  <view class="name" bindtap='useMeals'>我的套餐</view>
+  <view class="dqtc">当前套餐</view>
+  <view wx:if="{{tcList!=''}}">
+    <view class="tcList" wx:for="{{tcList}}" wx:key="list">
+      <view class="tcName">{{item.rechargeName}}</view>
+      <view class="content">
+        <text>剩余{{item.totalCount}}次</text>
+        <text class="time">有效期至：{{item.time}}</text>
+      </view>
+    </view>
+    <view class="buyTc">
+      <button class="btn" bindtap='buyTc'>购买套餐</button>
+    </view>
+  </view>
+  <view wx:else>
+    <view class="noTc">
+    <image src="../images/meal.png" class="img"></image>
+    <view >您还没有购买套餐</view>
+      <button class="btn" bindtap='buyTc'>购买套餐</button>
+    </view>
+  </view>
+</view>

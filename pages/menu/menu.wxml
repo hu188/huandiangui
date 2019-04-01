@@ -1,0 +1,140 @@
+<!--pages/menu/menu.wxml-->
+<view>
+  <view class="userinfo">
+    <view>
+      <view class="nickName">{{userInfo.nickName}}</view>
+      <text class="signature">选e达换电，世界不打烊</text>
+    </view>
+    <view bindtap='toMyCenter' class="enter">
+      <image src='{{userInfo.avatarUrl}}' class='userinfo-avatar' ></image>
+      <i-icon type="enter" size='30' color="#646464" class="enter"/>
+    </view>
+  </view>
+  <view class="empty"></view>
+  <view>
+    <view class="order-list-all">
+      <navigator url="../battery/battery">
+        <view class="div_div1 orderList">
+          <view class="tab_div">
+            <view class="ico1">
+              <!-- <image src="../images/fapiao.png"></image> -->
+               <i-icon type="flashlight" size="28"  color="#85DA46" style='margin-right:10px;'/>
+              <view class="tab_span">我的电池</view>
+            </view>
+            <view class="ico2">
+             <i-icon type="enter" size='16' color="#646464"/>
+            </view>
+          </view>
+          <view class="divclear5"></view>
+        </view>
+      </navigator>
+
+     <navigator url="../taoCan/taoCan">
+        <view class="div_div1 orderList">
+          <view class="tab_div">
+            <view class="ico1">
+              <!-- <image src="../images/fapiao.png" class="vip"></image> -->
+               <i-icon type="coupons" size="28"  color="#FFAF25" style='margin-right:10px;'/>
+              <view class="tab_span">我的套餐</view>
+            </view>
+            <view class="ico2">
+              <i-icon type="enter" size='16' color="#646464"/>
+            </view>
+          </view>
+          <view class="divclear5"></view>
+        </view>
+      </navigator>
+      <navigator url="../myWallet/wallet/wallet">
+        <view class="div_div1 orderList">
+          <view class="tab_div">
+            <view class="ico1">
+              <!-- <image src="../images/fapiao.png" class="vip"></image> -->
+               <i-icon type="redpacket" size="28"  color="#0CC6C2" style='margin-right:10px;'/>
+              <view class="tab_span">我的钱包</view>
+            </view>
+            <view class="ico2">
+              <i-icon type="enter" size='16' color="#646464"/>
+            </view>
+          </view>
+          <view class="divclear5"></view>
+        </view>
+      </navigator>
+      <navigator url="../myCar/myCar">
+        <view class="div_div1 orderList">
+          <view class="tab_div">
+            <view class="ico1">
+              <!-- <image src="../images/fapiao.png" class="vip"></image> -->
+               <i-icon type="tailor" size="28"  color="#A582F1" style='margin-right:10px;'/>
+              <view class="tab_span">我的车辆</view>
+            </view>
+            <view class="ico2">
+              <i-icon type="enter" size='16' color="#646464"/>
+            </view>
+          </view>
+          <view class="divclear5"></view>
+        </view>
+      </navigator>
+       
+      <navigator url="../activityList/activityList">
+        <view class="div_div1 orderList">
+          <view class="tab_div">
+            <view class="ico1">
+              <!-- <image src="../images/fapiao.png" class="vip"></image> -->
+               <i-icon type="document" size="28"  color="#299CE7" style='margin-right:10px;'/>
+              <view class="tab_span">活动列表</view>
+            </view>
+            <view class="ico2">
+              <i-icon type="enter" size='16' color="#646464"/>
+            </view>
+          </view>
+          <view class="divclear5"></view>
+        </view>
+      </navigator>
+  <navigator url="../serviceNetwork/serviceNetwork">
+        <view class="div_div1 orderList">
+          <view class="tab_div">
+            <view class="ico1">
+              <!-- <image src="../images/fapiao.png" class="vip"></image> -->
+               <i-icon type="homepage" size="28"  color="#299789" style='margin-right:10px;'/>
+              <view class="tab_span">服务网点</view>
+            </view>
+            <view class="ico2">
+              <i-icon type="enter" size='16' color="#646464"/>
+            </view>
+          </view>
+          <view class="divclear5"></view>
+        </view>
+      </navigator>
+      <navigator url="../userGuide/userGuide">
+        <view class="div_div1 orderList">
+          <view class="tab_div">
+            <view class="ico1">
+              <!-- <image src="../images/fapiao.png" class="vip"></image> -->
+               <i-icon type="mine" size="28"  color="#ff0000" style='margin-right:10px;'/>
+              <view class="tab_span">用户指南</view>
+            </view>
+            <view class="ico2">
+              <i-icon type="enter" size='16' color="#646464"/>
+            </view>
+          </view>
+          <view class="divclear5"></view>
+        </view>
+      </navigator>
+      <navigator url="../settings/settings">
+        <view class="div_div1 orderList">
+          <view class="tab_div">
+            <view class="ico1">
+              <!-- <image src="../images/fapiao.png" class="vip"></image> -->
+              <i-icon type="setup" size="28"  color="#80848f" style='margin-right:10px;'/>
+              <view class="tab_span">设置</view>
+            </view>
+            <view class="ico2">
+             <i-icon type="enter" size='16' color="#646464"/>
+            </view>
+          </view>
+          <view class="divclear5"></view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

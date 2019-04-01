@@ -1,0 +1,64 @@
+{
+  "pages": [
+   
+    "pages/map/map",
+    "pages/serviceNetwork/serviceNetwork",
+    "pages/taoCan/chooseTc/chooseTc",
+    "pages/activityList/activityList",
+    "pages/myCenter/realName/realName",
+    "pages/login/login",
+    "pages/test/index",
+    "pages/map/deviceStatus/deviceStatus",
+    "pages/map/chooseSite/chooseSite",
+    "pages/serviceNetwork/cityService/cityService",
+    "pages/map/news/news",
+    "pages/map/cityLists/cityLists",
+    "pages/menu/menu",
+    "pages/taoCan/taoCan",
+    "pages/myWallet/refund/refund",
+    "pages/myWallet/wallet/wallet",
+    "pages/myCar/myCar",
+    "pages/myCenter/myCenter",
+    "pages/taoCan/payTc/payTc",
+    "pages/settings/settings",
+    "pages/myWallet/order/order",
+    "pages/battery/battery",
+    "pages/myWallet/recharge/recharge",
+    "pages/myWallet/coupon/coupon",
+    "pages/settings/about/about",
+    "pages/settings/cash/cash",
+    "pages/settings/feedback/feedback",
+    "pages/settings/rechargeAgreement/rechargeAgreement",
+    "pages/settings/userAgreement/userAgreement",
+    "pages/taoCan/tcExplain/tcExplain",
+    "pages/myCenter/changeName/changeName",
+    "pages/myCar/carSettings/carSettings",
+    "pages/myCar/drivingRecord/drivingRecord",
+    "pages/myCar/batteryDetails/batteryDetails",
+    "pages/myCar/changeCarName/changeCarName",
+    "pages/userGuide/userGuide",
+    "pages/userGuide/bindCar/bindCar",
+    "pages/userGuide/rentBattery/rentBattery",
+    "pages/userGuide/replaceBattery/replaceBattery",
+    "pages/userGuide/recharge/recharge",
+    "pages/userGuide/customer/customer",
+    "pages/userGuide/returnBattery/returnBattery",
+    "pages/userGuide/taoCan/taoCan",
+    "pages/login/registerAgreement/registerAgreement",
+    "pages/serviceNetwork/carService/carService",
+    "pages/serviceNetwork/batteryService/batteryService",
+    "pages/serviceNetwork/batteryCityService/batteryCityService",
+    "pages/map/search/search"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#111",
+    "navigationBarTitleText": "e达换电",
+    "navigationBarTextStyle": "white"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序地图显示功能"
+    }
+  }
+}

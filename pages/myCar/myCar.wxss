@@ -1,0 +1,43 @@
+/* pages/myCar/myCar.wxss */
+.body{
+  margin: 25px;
+}
+.name{
+   font-weight: 550;
+   font-size: 25px;
+}
+.img{
+  width: 40px;
+  height: 40px;
+}
+.dcxq{
+  border-radius: 5px;
+  width: 140px;
+  height: 110px;
+  box-shadow:5px 5px 20px rgb(233, 227, 227);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+}
+.csxq{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction:row;
+  margin-top: 15px;
+}
+.btn{
+  width: 150px;
+  background: rgb(255,107,0);
+  color: #ffffff;
+  margin-top: 20px;
+}
+.addCar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50%;
+  font-size: 16px;
+  color:#888888;
+}

@@ -1,0 +1,18 @@
+<!--pages/taoCan/buyTc/buyTc.wxml-->
+<view class="body">
+  <view class="tc">
+    <view class="xztc">选择套餐</view>
+    <view class="tcsm" bindtap='tcExplain'>套餐说明</view>
+  </view>
+  <view class="tcList"  wx:for="{{tcList}}" wx:key="list" >
+        <view class="tcName">{{item.rechargeName}}</view>
+        <view class="content">
+            <text >￥{{item.money}}</text>
+            <text class="time">{{item.rechargeCount}}次/30天</text>
+        </view>
+          <view class="tcgm" bindtap='tobuy' data-id="{{index}}">
+            购买
+          </view>
+       
+    </view>
+</view>

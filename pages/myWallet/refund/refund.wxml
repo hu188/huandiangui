@@ -1,0 +1,14 @@
+<!--pages/myWallet/refund/refund.wxml-->
+<view class="name">押金退还</view>
+
+<view class="yjList">
+  <view class="yjMessage">
+    <view class="yjName">{{name}}</view>
+    <view class="yjMoney">￥{{money}}.00</view>
+    <button class="btn" bindtap='refundMoney'>押金退还</button>
+    <view class="yjTime">租借时间 {{time}}</view>
+  </view>
+</view>
+<view class="warn">
+  <text>温馨提示：退还押金之前要确保您手中的电池已归还！</text>
+</view>

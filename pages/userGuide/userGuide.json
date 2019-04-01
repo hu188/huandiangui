@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "用户指南",
+  "usingComponents": {
+    "i-cell-group": "../../Components/cell-group/index",
+    "i-cell": "../../Components/cell/index"
+  }
+}

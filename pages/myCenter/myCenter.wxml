@@ -1,0 +1,33 @@
+<!--pages/myCenter/myCenter.wxml-->
+<text class="center">个人中心</text>
+<!-- 头像 -->
+<view class="userinfo">
+  <image src='{{userInfo.avatarUrl}}' class='userinfo-avatar' bindtap='changeImage'>
+  </image>
+  <text class="nickName">{{userInfo.nickName}}</text>
+</view>
+<view>
+  <i-cell-group>
+    <i-cell title="我的昵称" value="{{userInfo.nickName}}" ></i-cell>
+    <!-- <picker bindchange="bindPickerChange" value="{{index}}" range="{{sex}}">
+      <i-cell title="性别" value="{{sex[index]?sex[index]:'男'}}" is-link></i-cell>
+    </picker> -->
+    <i-cell title="性别" value="{{userInfo.gender=='2'?'女':'男'}}" ></i-cell>
+    <!-- <picker mode="date" value="{{date}}" start="1900-01-01" end="{{endData}}" bindchange="bindDateChange">
+      <i-cell title="生日" value="{{date}}" is-link url=""></i-cell>
+    </picker> -->
+    <i-cell title="手机号码" value="{{phone.toHide(userPhone)}}"></i-cell>
+    <i-cell title="实名认证" value="{{realName?'已认证':'未认证'}}" is-link url="realName/realName?realName={{realName}}&idcard={{idcard}}"></i-cell>
+  </i-cell-group>
+</view>
+<!-- <view>
+  <button class="btn" bindtap='saveInfo'>保存修改</button>
+</view> -->
+<i-toast id="toast" />
+<wxs module="phone">
+  var toHide = function(array) {
+    var mphone = array.substring(0, 3) + '****' + array.substring(7);
+    return mphone;
+  }
+  module.exports.toHide = toHide;
+</wxs>

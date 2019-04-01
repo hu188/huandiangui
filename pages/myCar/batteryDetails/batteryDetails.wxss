@@ -1,0 +1,6 @@
+/* pages/myCar/batteryDetails/batteryDetails.wxss */
+.name{
+   font-weight: 550;
+   font-size: 25px;
+   margin: 20px;
+}

@@ -1,0 +1,99 @@
+/* pages/myCenter/realName/realName.wxss */
+.name{
+  font-size: 25px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.body{
+  margin: 25px;
+}
+.phoneNumber{
+  border-bottom: 1px #E1E2E4 solid;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 25px;
+}
+.btn{
+   border-radius: 20px;
+  background: rgb(255,107,0);
+  width: 88%;
+  position:fixed;
+  bottom:20px;
+}
+.upload{
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.upload-img{
+  display: flex;
+  justify-content: space-between;
+
+}
+.upload-IDcard{
+  width:130px;
+  height: 130px;
+
+}
+
+/* uploader */
+.ui_uploader_cell {
+    width: 100%;
+    padding: 40rpx;
+    box-sizing: border-box;
+}
+.ui_uploader_item{
+    float: left;
+    position: relative;
+    margin-right: 30rpx;
+    margin-bottom: 30rpx;
+    width: 165rpx;
+    height: 165rpx;
+}
+.ui_uploader {
+    float: left;
+    position: relative;
+    margin-right: 25rpx;
+    margin-bottom: 25rpx;
+    width: 165rpx;
+    height: 165rpx;
+    border: 2rpx solid #d9d9d9;
+    box-sizing: border-box;
+}
+
+.ui_uploader:before {
+    content: " ";
+    position: absolute;
+    width: 4rpx;
+    height: 79rpx;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #d9d9d9;
+}
+
+.ui_uploader:after {
+    content: " ";
+    position: absolute;
+    height: 4rpx;
+    width: 79rpx;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #d9d9d9;
+}
+.ui_uploader_item_icon{
+    position: absolute;
+    right: -20rpx;
+    top: -20rpx;
+    background: #fff;
+    border-radius: 50%;
+}
+.ui_uploader_item image {
+    width: 100%;
+    height: 100%;
+}

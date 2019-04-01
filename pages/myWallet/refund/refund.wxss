@@ -1,0 +1,43 @@
+/* pages/myWallet/refund/refund.wxss */
+.name{
+   font-weight: 550;
+   font-size: 25px;
+   margin: 20px;
+}
+.yjList{
+  width: 90%;
+  height: 170px;
+  box-shadow:5px 5px 20px rgb(233, 227, 227);
+  border-radius: 10px;
+  margin-left: 5%;
+}
+.yjMessage{
+  padding: 20px;
+}
+.yjMoney{
+  font-weight: 500px;
+  font-size: 35px;
+  margin-top: 20px;
+}
+.yjTime{
+  margin-top: 20px;
+  font-size: 16px;
+  color: rgb(174,174,174)
+}
+.btn{
+  width: 100px;
+  height:45px;
+  float: right;
+  background-color: rgb(255,107,0)
+}
+.warn{
+ 
+  color: rgb(174,174,174);
+  font-size: 15px;
+   position: fixed;
+  bottom: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+}

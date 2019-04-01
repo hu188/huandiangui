@@ -1,0 +1,7 @@
+<!--pages/userGuide/rentBattery /rentBattery .wxml-->
+<view>
+  <i-cell-group>
+    <i-cell title="押金充值" is-link url="../../../bindCar/bindCar"></i-cell>
+    <i-cell title="取电池" is-link url="../../../rentBattery/rentBattery "></i-cell>
+  </i-cell-group>
+</view>

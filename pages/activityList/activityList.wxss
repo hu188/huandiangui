@@ -1,0 +1,18 @@
+/* pages/activityList/activityList.wxss */
+.img{
+  width:120px;
+  height: 150px;
+}
+.body{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.no-activity{
+  color: #aaa;
+  font-size: 15px;
+}
+

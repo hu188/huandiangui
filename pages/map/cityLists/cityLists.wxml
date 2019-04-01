@@ -1,0 +1,13 @@
+<!--pages/map/cityLists/cityLists.wxml-->
+<view class="body">
+  <view class="txt">当前定位城市</view>
+  <view class="currentCity" data-cityId="{{0}}" bindtap='chooseCity'>
+    <i-icon type="coordinates" size='20' color='red' />{{currentCity.cityName}}
+  </view>
+  <view class="txt">换电服务开通城市</view>
+  <view class='cityList'>
+    <view wx:for="{{cityLists}}" wx:key="city" >
+      <view class="city" data-cityId="{{item.id}}" bindtap='chooseCity'>{{item.cityName}}</view>
+    </view>
+  </view>
+</view>

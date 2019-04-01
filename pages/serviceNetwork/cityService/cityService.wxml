@@ -1,0 +1,19 @@
+<!--pages/serviceNetwork/cityService/cityService.wxml-->
+<view class="city-Name">{{cityName}}</view>
+  <view class="empty"></view>
+<view wx:if="{{carList}}">
+<view wx:for="{{carList}}" wx:key="carlist">
+ <view class="content">
+  <view class="content-left">
+    <image src='../../images/car.png' class="car-img"></image>
+    <view class="cars">
+      <text class="car-name">{{item.name}}</text>
+      <text class="car-describe">车辆改装</text>
+    </view>
+  </view>
+  <image src='../../images/phone.png' class="phone-img"></image>
+</view>
+  <view class="car-address">{{item.address}}</view>
+  <view class="empty"></view>
+</view>
+</view>

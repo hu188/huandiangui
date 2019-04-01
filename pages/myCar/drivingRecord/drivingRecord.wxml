@@ -1,0 +1,66 @@
+<!--pages/myCar/drivingRecord/drivingRecord.wxml-->
+<view class="body">
+  <view class="csxq">
+    <view class="dcxq">
+      <view>累计骑行距离</view>
+      <view>20km</view>
+    </view>
+    <view class="dcxq">
+      <view>总时间</view>
+      <view>10h</view>
+    </view>
+  </view>
+  <view class="csxq">
+    <view class="dcxq">
+      <view>公里</view>
+      <view>10</view>
+    </view>
+    <view class="dcxq">
+      <view>总换电次数</view>
+      <view>10</view>
+    </view>
+  </view>
+  <view class="empty"></view>
+
+
+  <!--日历，记录女性月经周期-->
+  <view class="calendar">
+
+    <!--年份和月份-->
+    <view class="flex calendar-choose">
+      <!--减月份-->
+      <view bindtap="reduceMonth">
+        <i-icon type="return" size='28' />
+      </view>
+      <!--显示月份-->
+      <view class="mouth-picker">
+        <view class="month">{{cur_year}}年{{cur_month}}月</view>
+      </view>
+      <!--加月份-->
+      <view bindtap="addMonth">
+        <i-icon type="enter" size='28' />
+      </view>
+      <view bindtap='findToday'>今</view>
+    </view>
+
+    <view class="flex week-list">
+      <view class="week-itm" wx:for="{{weeklist}}" wx:key="week">{{item}}</view>
+    </view>
+
+    <view class="flex days-list">
+      <view class="day lm" wx:for="{{lastMonthDaysList}}" data-handle="prev" wx:key="lastMonthDays">
+        <text>{{item}}</text>
+      </view>
+      <block wx:for="{{currentMonthDaysList}}" wx:key="currentMonthDays">
+        <view class="day ">
+          <view class="{{now_day==item && todayColor?'dayBackground':''}}" bindtap='chooseDay' data-day="{{item}}">
+            <text class="{{chooseDay == item ?'dayColor':''}}">{{item}}</text>
+          </view>
+        </view>
+      </block>
+      <view class="day nm" wx:for="{{nextMonthDaysList}}" data-handle="next" wx:key="nextMonthDays">
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+/* pages/coupon/coupon.wxss */
+.coupon{
+   font-weight: 550;
+   font-size: 25px;
+   margin: 10px;
+}

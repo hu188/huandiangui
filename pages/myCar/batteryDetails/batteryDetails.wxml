@@ -1,0 +1,8 @@
+<!--pages/myCar/batteryDetails/batteryDetails.wxml-->
+<view class="name">电池详情</view>
+<i-cell-group>
+  <i-cell title="电池ID" value="{{batteryId}}" ></i-cell>
+  <i-cell title="充放次数" value="{{chargeNum}}" ></i-cell>
+  <i-cell title="额定电流" value="{{i}}" ></i-cell>
+  <i-cell title="额定电压" value="{{v}}" ></i-cell>
+</i-cell-group>

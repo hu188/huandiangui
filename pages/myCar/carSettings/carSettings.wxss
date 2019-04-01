@@ -1,0 +1,10 @@
+/* pages/myCar/carSettings/carSettings.wxss */
+
+.btn{
+  border-radius: 20px;
+  background: rgb(255,107,0);
+  width: 90%;
+  margin-left: 5%;
+  position:fixed;
+  bottom:20px;
+}

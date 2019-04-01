@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "行车记录",
+    "usingComponents": {
+      "i-icon": "../../../Components/icon/index"
+    }
+}

@@ -1,0 +1,41 @@
+<!--pages/map/chooseSite/chooseSite.wxml-->
+<view class="body">
+  <image class="background-img" src="../../images/live-action.png"></image>
+  <view class="siteMsg">
+    <view class="site">
+      <view class="current-address">{{c_device.address}}</view>
+      <view class="gps" bindtap='toNav'>
+        <!-- <image class="dhimg" src="../../images/timg.jpg"></image> -->
+        <view>导航</view>
+      </view>
+      <view class="battery-msg">
+        <text>编号:</text>
+        <text>{{c_device.title}}</text>
+      </view>
+      <!-- <view class="battery-msg">
+      <text>换电高峰:</text>
+      <text>10点 11点 18点</text>
+    </view> -->
+      <view class="battery-msg">
+        <text>换电柜电池数量:</text>
+        <text>48v0个 60v9个 空仓0个 </text>
+      </view>
+      <view class="battery-msg">
+        <text>电池详情:</text>
+      </view>
+      <view wx:if="{{battery!=''}}">
+        <view wx:for="{{battery}}" wx:key="battery">
+          <view class="battery-msg">
+            <text>{{item}}</text>
+          </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="hdqx">
+  <!-- <view class="canvas-view">
+    <canvas class="canvas" canvas-id="canvasId"></canvas>
+  </view> -->
+</view>
+</view>

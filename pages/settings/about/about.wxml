@@ -1,0 +1,19 @@
+<!--pages/settings/about/about.wxml-->
+<view class="aboutUs">关于我们</view>
+<view class="info">
+  <view>
+    <image src='../../images/1.jpg' class='info-avatar' bindtap='toMyCenter'></image>
+  </view>
+  <view>
+    <view class="nickName">e达换电</view>
+    <text class="signature">v1.1.3</text>
+  </view>
+</view>
+<view>
+  <i-cell-group>
+    <i-cell title="关于我们" value="e达换电" is-link></i-cell>
+    <i-cell title="官方网站" value="http://www.xxxx.xxxx" is-link ></i-cell>
+    <i-cell title="联系电话" value="025-454512541" is-link ></i-cell>
+    <i-cell title="电子邮箱" value="huandian@.com" is-link ></i-cell>
+  </i-cell-group>
+</view>

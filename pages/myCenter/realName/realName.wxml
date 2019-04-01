@@ -1,0 +1,33 @@
+<view class="body">
+  <view class="name">实名认证</view>
+  <view wx:if="{{realName=='' && idcard==''}}">
+    <form bindsubmit="identification">
+      <view class="phoneNumber">
+        <i-icon type="createtask" size='30' color='#747681' />
+        <input name="realName" type='text' placeholder='请输入真实姓名' class="txt"></input>
+      </view>
+      <view class="phoneNumber">
+        <i-icon type="browse" size='30' color='#747681' />
+        <input name="idcard" type='idcard' placeholder='请输入身份证号' class="txt"></input>
+      </view>
+      <view class="upload">请上传身份证正反面照片</view>
+      <view class='ui_uploader_cell'>
+        <view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{index}}">
+          <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20" color="red" />
+          <image bindtap='showImg' data-index="{{index}}" src='{{item}}'></image>
+        </view>
+        <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}"></view>
+      </view>
+      <button class="btn" formType="submit">立即认证</button>
+    </form>
+  </view>
+  <view wx:else>
+    <view class="phoneNumber">
+      <text style="color:#495060">真实姓名:{{realName}}</text>
+    </view>
+    <view class="phoneNumber">
+      <text style="color:#495060">身份证号码:{{idcard}}</text>
+    </view>
+  </view>
+</view>
+<i-toast id="toast" />

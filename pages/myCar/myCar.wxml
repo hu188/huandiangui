@@ -1,0 +1,38 @@
+<!--pages/myCar/myCar.wxml-->
+<view class="body">
+  <view wx:if="{{hasBattery}}">
+    <view class="name">G05</view>
+    <view class="csxq">
+      <navigator url="batteryDetails/batteryDetails">
+        <view class="dcxq">
+          <!-- <image src="../images/waitget.png" class="img"></image> -->
+          <i-icon type="flashlight" size='48' color='#FFAB31'/>
+          <view>电池详情</view>
+        </view>
+      </navigator>
+      <navigator url="drivingRecord/drivingRecord">
+        <view class="dcxq">
+          <!-- <image src="../images/waitget.png" class="img"></image> -->
+          <i-icon type="document" size='48' color='#22CCC0'/>
+          <view>行程记录</view>
+        </view>
+      </navigator>
+    </view>
+    <view class="csxq">
+      <navigator url="carSettings/carSettings">
+        <view class="dcxq">
+          <!-- <image src="../images/waitget.png" class="img"></image> -->
+          <i-icon type="setup" size='48' color='#0989FF'/>
+          <view>车辆设置</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view wx:else>
+    <view class='addCar'>
+    <image src='../images/waitget.png' class="img"></image>
+    <view>您暂时没有车辆</view>
+    <button class="btn" bindtap='addCar'>添加车辆</button>
+    </view>
+  </view>
+</view>

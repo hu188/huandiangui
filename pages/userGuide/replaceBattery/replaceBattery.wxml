@@ -1,0 +1,7 @@
+<!--pages/userGuide/replaceBattery/replaceBattery.wxml-->
+<view>
+  <i-cell-group>
+    <i-cell title="如何换电池" is-link url="../../../bindCar/bindCar"></i-cell>
+    <i-cell title="如何应对换电池失败情况" is-link url="../../../rentBattery/rentBattery "></i-cell>
+  </i-cell-group>
+</view>

@@ -1,0 +1,37 @@
+<!--pages/map/news/news.wxml-->
+<view class='title'>新闻公告</view>
+  <view class="empty"></view>
+  <!-- <view wx:for="{{newsList}}" wx:key="news">
+   -->
+   <view>
+    <view class="news">
+      <image src="../../images/gonggao.png" class="img"></image>
+       <view class="content">
+          <view class="newsTitle">
+            <text class="n-title">电动车注意事项</text>
+            <text class="n-time">2-12 18：20</text>
+          </view>
+          <view>
+            <view class="txt">春节期间未使用电池，车会自动进入休眠，如遇到不能启动试下插拔电池即可恢复</view>
+          </view>
+      </view>
+    </view>
+     <view class="empty"></view>
+  </view>
+
+   <view>
+    <view class="news">
+      <image src="../../images/gonggao.png" class="img"></image>
+       <view class="content">
+          <view class="newsTitle">
+            <text class="n-title">电动车注意事项</text>
+            <text class="n-time">2-12 18：20</text>
+          </view>
+          <view>
+            <view class="txt">春节期间未使用电池，车会自动进入休眠，如遇到不能启动试下插拔电池即可恢复</view>
+          </view>
+      </view>
+    </view>
+     <view class="empty"></view>
+  </view>
+

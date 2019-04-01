@@ -1,0 +1,7 @@
+<!--pages/myCar/carSettings/carSettings.wxml-->
+<i-cell-group>
+  <i-cell title="车辆昵称" value="{{name}}" is-link url="../changeCarName/changeCarName?name={{name}}"></i-cell>
+  <i-cell title="出厂日期" value="{{date}}" ></i-cell>
+  <i-cell title="序列号" value="{{number}}" ></i-cell>
+</i-cell-group>
+<button class="btn">解绑车辆</button>

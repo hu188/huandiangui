@@ -1,0 +1,54 @@
+/* pages/map/search/search.wxss */
+.title{
+ 
+}
+.address{
+  font-size:12px;
+  color:#666;
+}
+.record{
+  height: 55px;
+  border-bottom: 1px #eee solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+
+
+.search{
+  width: 85%;
+}
+.search_arr {
+  border: 1px solid #d0d0d0;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+}
+.search_arr input{
+  margin-left: 60rpx;
+  height: 60rpx;
+  border-radius: 5px;
+}
+.bc_text {
+  line-height: 68rpx;
+  height: 68rpx;
+  margin-top: 34rpx;
+}
+ 
+.sousuo {
+  margin-left: 15rpx;
+}
+.page_row{
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  align-items: center;
+  }
+.searchcion {
+  margin: 10rpx 10rpx 10rpx 10rpx;
+  position: absolute;
+  left:25rpx;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}

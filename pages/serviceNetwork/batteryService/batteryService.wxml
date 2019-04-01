@@ -1,0 +1,48 @@
+<!--pages/serviceNetwork/batteryService/batteryService.wxml-->
+<view class="body">
+  <view class="name">电池服务站点</view>
+  <view class="txt">各城市e达换电服务签约车行一览。您可以选择就近的任意一个退还电池服务站点，退还您自己的电池。
+  </view>
+  <view class="cityList">
+    <view class="distance">
+      <navigator url="../batteryCityService/batteryCityService" hover-class="none">
+        <view class="city">
+          <image src="../../images/city.png" class="img"></image>
+          <view>北京</view>
+        </view>
+      </navigator>
+    </view>
+    <view class="distance">
+      <navigator url="../batteryCityService/batteryCityService" hover-class="none">
+        <view class="city">
+          <image src="../../images/city.png" class="img"></image>
+          <view>北京</view>
+        </view>
+      </navigator>
+    </view>
+    <view class="distance">
+      <navigator url="../batteryCityService/batteryCityService" hover-class="none">
+        <view class="city">
+          <image src="../../images/city.png" class="img"></image>
+          <view>北京</view>
+        </view>
+      </navigator>
+    </view>
+    <view class="distance">
+      <navigator url="../batteryCityService/batteryCityService" hover-class="none">
+        <view class="city">
+          <image src="../../images/city.png" class="img"></image>
+          <view>北京</view>
+        </view>
+      </navigator>
+    </view>
+    <view class="distance">
+      <navigator url="../batteryCityService/batteryCityService" hover-class="none">
+        <view class="city">
+          <image src="../../images/city.png" class="img"></image>
+          <view>北京</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

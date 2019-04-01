@@ -1,0 +1,57 @@
+.container{
+    width: 100%;
+    background-color:#F5F5F9;
+    font-size: 13px;
+    height: 100%;
+}
+.container .item{
+   width: 100%;
+}
+
+ .container .tb1 {
+  width: 100%;
+}
+.classtab {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  font-size: 16px;
+
+}
+scroll-view{
+  height: 100%;
+  padding-bottom: 100rpx;
+}
+.od_top{
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border-bottom: 1px dashed #eee;
+    margin-top: 10px;
+    color: #777;
+    font-size: 15px;
+}
+.list{
+  margin-top: 40px;
+  margin-left: 20px;
+}
+.btn{
+  border-radius: 20px;
+  background: rgb(255,107,0);
+  width: 90%;
+  margin-left: 5%;
+  position:fixed;
+  bottom:20px;
+}
+.ts{
+   /* position:fixed;
+   bottom:320px; */
+   position: absolute;
+   top:300px;
+   text-align: center;
+   width: 100%;
+   font-size: 16px;
+   color:#aaa;
+}

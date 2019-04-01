@@ -1,0 +1,14 @@
+<!--pages/serviceNetwork/serviceNetwork.wxml-->
+<view class="body">
+  <view class="name">服务网点</view>
+  <view>
+    <view class="flex-service" bindtap="carService">
+      <image src="../images/car.png" class="img"></image>
+      <view class="txt">车辆服务站点<i-icon type="enter" size='20'/></view>
+    </view>
+    <view class="flex-service" bindtap="batteryService">
+      <image src="../images/battery-orange.png" class="img"></image>
+      <view class="txt">电池退还站点<i-icon type="enter" size='20'/></view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "购买套餐",
+    "usingComponents": {
+      "i-icon": "../../../Components/icon/index",
+    "i-toast": "../../../Components/toast/index"
+    }
+}

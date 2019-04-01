@@ -1,0 +1,19 @@
+/* pages/battery/battery.wxss */
+.addBattery{
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50%;
+  font-size: 16px;
+  color:#888888;
+}
+.btn{
+  width: 150px;
+  background: rgb(255,107,0);
+  color: #ffffff;
+  margin-top: 20px;
+}
+.img{
+  width:100px;
+  height: 100px;
+}

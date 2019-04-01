@@ -1,0 +1,7 @@
+<!--pages/map/deviceStatus/deviceStatus.wxml-->
+<view class="title">换电中</view>
+<image src="../../images/battery.png" class="img"></image>
+<view class="txt">
+<view>电池状态：{{status}}</view>
+<view>当前操作：<text style="color:red">{{queryStatus}}</text></view>
+</view>

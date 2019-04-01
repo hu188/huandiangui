@@ -1,0 +1,10 @@
+<!--pages/activityList/activityList.wxml-->
+<view wx:if="{{activityList}}">
+
+</view>
+<view wx:else>
+  <view class="body">
+    <image src='../images/activity.png' class="img"></image>
+    <view class="no-activity">暂无可参加的活动</view>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+<!--pages/coupon/coupon.wxml-->
+<view class="coupon">我的优惠券</view>
+<view wx:if="{{couponList}}"> 
+
+</view>
+<view wx:else>
+<i-divider content="暂无可使用的优惠券"></i-divider>
+</view>
