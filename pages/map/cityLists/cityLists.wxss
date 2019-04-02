@@ -24,13 +24,14 @@ align-items: center;
 border-radius: 5px;
 height: 40px;
 margin-top: 20px;
-
+margin-right: 8px;
 }
 .cityList{
 width:100%;
 display: flex;
 flex-wrap: wrap;
-justify-content: space-between
+justify-content: flex-start;
+
 }
 .txt{
   color:#495060;

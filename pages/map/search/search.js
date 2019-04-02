@@ -1,11 +1,11 @@
 // pages/map/search/search.js
 // 引入SDK核心类
 var QQMapWX = require('../../../utils/qqmap-wx-jssdk.min.js')
-
 // 实例化API核心类
 var qqmapsdk = new QQMapWX({
   key: 'VMDBZ-H7O3W-UMIRM-R5DNU-TK2J5-AGFJ5' // 必填
 });
+
 var app = getApp();
 Page({
 
@@ -15,7 +15,12 @@ Page({
   data: {
 
   },
+  /**
+    * 生命周期函数--监听页面加载
+    */
+  onLoad: function (options) {
 
+  },
   chooseAddress:function(e){
     var id = e.currentTarget.id;
     for (var i = 0; i < this.data.suggestion.length; i++) {
@@ -66,12 +71,7 @@ Page({
       },
     });
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
+ 
 
   /**
    * 生命周期函数--监听页面初次渲染完成
