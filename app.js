@@ -103,6 +103,7 @@ App({
     selectGood:'',//购买的套餐
     userPhone:"",
     isLogin:false,
-    c_device:''//当前设备
+    c_device:'',//当前设备
+
   }
 })

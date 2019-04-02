@@ -11,8 +11,6 @@ Page({
   data: {
     realName:'',
     idcard:'',
-    // frontImg:"../../images/add.jpg",//正面照
-    // reverseImg:"../../images/fan.jpg",//反面照
     uploaderList: [],
     showUpload: true,//是否显示+图形
     uploaderNum:0
@@ -26,7 +24,7 @@ Page({
     if(options.realName){
       this.setData({
         realName: options.realName,
-        idcard: options.idcard
+        idcard: options.idNumber
       })
     }
   },
@@ -34,20 +32,52 @@ Page({
   //实名认证
   identification: function (e) {
     let { realName, idcard } = e.detail.value;
-    this.setData({
-      realName: realName,
-      idcard: idcard
-    })
+    // this.setData({
+    //   realName: realName,
+    //   idcard: idcard
+    // })
     if (realName == "" || idcard == "") {
       $Toast({
         content: '请输入姓名和身份证号码',
         type: 'warning'
       });
+    }else if (this.data.uploaderList.length==0) {
+      $Toast({
+        content: '请上传照片',
+        type: 'warning'
+      });
+    }else{
+      //this.uploadimg()
+      this.saveRealName(realName, idcard)
     }
-
-    this.uploadimg()
+   
   },
-
+  //保存用户信息
+  saveRealName(realName, idcard){
+    const {sessionId,openid} = app.globalData;
+    const params = {
+      sign: encode({
+        sessionId: sessionId,
+        realName: realName,
+        idNumber: idcard,
+        openid:openid
+      }, sessionId),
+      sessionId: sessionId,
+      params: {
+        sessionId: sessionId,
+        realName: realName,
+        idNumber: idcard,
+        openid: openid
+      }
+    }
+    http('qsq/service/external/WeChatUser/saveRealName', JSON.stringify(params), 1, 1).then(res => {
+      if(res==1){
+        wx.navigateBack({
+          delta:1
+        })
+      }
+    })
+  },
   // 删除图片
   clearImg: function (e) {
     var nowList = [];//新数据
@@ -102,7 +132,7 @@ Page({
   uploadimg: function () {
     var imageList = this.data.uploaderList;
     app.uploadimg({
-      url: 'https://qsq.mynatapp.cc/qsqFile/service/upload/imagess',//这里是你要上传的服务器接
+      url: 'https://qsq.mynatapp.cc/qsqFile/service/upload/image',//这里是你要上传的服务器接
       path: imageList,//这里是你最开始定义的图片数组
       cusId: app.globalData.cusId
     })

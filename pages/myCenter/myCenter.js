@@ -14,7 +14,7 @@ Page({
     name:'123',
     date:'1991-01-01',
     realName:'',
-    idcard:'',
+    idNumber:'',
     userInfo: "",
     userPhone:''
   },
@@ -26,7 +26,11 @@ Page({
     this.setData({
       userInfo: app.globalData.userInfo,
       userPhone:app.globalData.userPhone
+      // idNumber: app.globalData.realName,
+      // realName: app.globalData.idNumber           
     })
+
+ 
     // if(options.name){
     //   this.setData({
     //     name: options.name
@@ -45,6 +49,29 @@ Page({
   //     endData: Y + '-' + M + '-' + D,
   //   })
   },
+  queryUser() {
+    const {sessionId,openid} = app.globalData
+    const params = {
+      sign: encode({
+        sessionId: sessionId,
+        openid: openid
+      },sessionId),
+      sessionId:sessionId,
+      params: {
+        sessionId: sessionId,
+        openid: openid
+      }
+    }
+    http('qsq/miniService/miniProComm/weChatCommon/getWeChatUser', JSON.stringify(params), 1, 1).then(res=>{
+     if(res.realName && res.idNumber){
+       this.setData({
+         idNumber: res.realName,
+         realName: res.idNumber
+       })
+     }
+    })
+  },
+
   //换头像
   // changeImage:function(){
   //   var _this = this
@@ -86,7 +113,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.queryUser()
   },
 
  

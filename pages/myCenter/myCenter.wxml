@@ -17,7 +17,7 @@
       <i-cell title="生日" value="{{date}}" is-link url=""></i-cell>
     </picker> -->
     <i-cell title="手机号码" value="{{phone.toHide(userPhone)}}"></i-cell>
-    <i-cell title="实名认证" value="{{realName?'已认证':'未认证'}}" is-link url="realName/realName?realName={{realName}}&idcard={{idcard}}"></i-cell>
+    <i-cell title="实名认证" value="{{realName?'已认证':'未认证'}}" is-link url="realName/realName?realName={{realName}}&idNumber={{idNumber}}"></i-cell>
   </i-cell-group>
 </view>
 <!-- <view>

@@ -1,7 +1,6 @@
 // pages/map/cityLists/cityLists.js
 import { http } from '../../../utils/http';
 import { encode } from '../../../utils/encode';
-var bmap = require('../../../utils/bmap-wx.min.js');
 var app = getApp();
 Page({
 
@@ -10,7 +9,7 @@ Page({
    */
   data: {
     currentCity:"",
-    cityLists: ["北京市", "上海市", "南京市", "天津市", "成都市", "武汉市"],
+    cityLists: [],
   },
 
   /**

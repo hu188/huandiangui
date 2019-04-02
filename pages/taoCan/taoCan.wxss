@@ -39,7 +39,7 @@
   padding-left: 25px;
 }
 .btn{
-  border-radius: 20px;
+  border-radius: 15px;
   background: rgb(255,107,0);
   width: 90%;
   margin-top: 50PX;

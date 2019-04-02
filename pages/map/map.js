@@ -1,10 +1,8 @@
 import { http } from '../../utils/http';
 import { encode } from '../../utils/encode';
 const { $Toast } = require('../../Components/base/index');
-const { $Message } = require('../../Components/base/index');
 var app = getApp();
-//百度地图API
-//var bmap = require('../../utils/bmap-wx.min.js');
+//腾讯地图
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js')
 var wxMarkerData = [];
 var qqmapsdk = new QQMapWX({
@@ -516,7 +514,7 @@ Page({
           polyline: [{
             points: pl,
             color: '#1F9AE4',
-            width: 2
+            width: 3
           }]
         })
       }
