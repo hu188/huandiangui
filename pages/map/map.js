@@ -193,8 +193,10 @@ Page({
         res[i].width=20;
         res[i].height=25;
         res[i].id = i;
+        var num = res[i].secondDevice.length;
         res[i].label={
-          content:" 1 ",
+          content:" "+num+" ",
+         //content:" 1 ",
           anchorX: 5, 
           anchorY:-35,
           borderWidth:1,

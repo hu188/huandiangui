@@ -11,7 +11,7 @@
   margin-left: 20px;
   margin-top: 15px;
   width: 88%;
-  height: 150px;
+  height: 160px;
   background: rgb(251, 220, 6);
   border-radius: 25px;
   box-shadow:4px 4px 20px rgb(236, 234, 234);
@@ -27,6 +27,7 @@
   color: #fff;
   display: block;
   padding-left: 25px;
+  padding-top: 15px;
 }
 .time{
   padding-left: 25px;

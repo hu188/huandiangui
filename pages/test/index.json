@@ -1,4 +1,9 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "i-grid": "../../Components/grid/index",
+    "i-grid-item": "../../Components/grid-item/index",
+    "i-grid-icon": "../../Components/grid-icon/index",
+    "i-grid-label": "../../Components/grid-label/index"
+  }
 }

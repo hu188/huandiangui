@@ -45,16 +45,6 @@ Page({
       })
     }
   },
-  /*
-   用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    return {
-      title: '简单日历实现小程序版本',
-      desc: '简单日历实现小程序版本',
-      path: '/pages/index/index'
-    };
-  },
 
   calendar: function (year, month) {
     var days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];

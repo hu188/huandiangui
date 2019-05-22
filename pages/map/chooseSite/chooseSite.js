@@ -37,22 +37,22 @@ Page({
     that.setData({
       c_device: app.globalData.c_device
     })
-    var secondDevice= that.data.c_device.secondDevice;
-    if (secondDevice){
-          var content = "";
-          for (var j = 0; j < secondDevice.length; j++) {
-            const { colsValues, remark } = secondDevice[j];
-            content = "电池ID：" + remark + ","
-            for (var key in colsValues) {
-              content += key + ":" + colsValues[key]+",";
-            }
-            content = content.substring(0, content.length - 1)
-            battery.push(content)
-          }
-        }
-   that.setData({
-     battery:battery
-   })
+  //   var secondDevice= that.data.c_device.secondDevice;
+  //   if (secondDevice){
+  //         var content = "";
+  //         for (var j = 0; j < secondDevice.length; j++) {
+  //           const { colsValues, remark } = secondDevice[j];
+  //           content = "电池ID：" + remark + ","
+  //           for (var key in colsValues) {
+  //             content += key + ":" + colsValues[key]+",";
+  //           }
+  //           content = content.substring(0, content.length - 1)
+  //           battery.push(content)
+  //         }
+  //       }
+  //  that.setData({
+  //    battery:battery
+  //  })
     //折线图
     this.initChart()
   },

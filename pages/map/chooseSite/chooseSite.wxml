@@ -16,26 +16,34 @@
       <text>换电高峰:</text>
       <text>10点 11点 18点</text>
     </view> -->
-      <view class="battery-msg">
+      <!-- <view class="battery-msg">
         <text>换电柜电池数量:</text>
         <text>48v0个 60v9个 空仓0个 </text>
-      </view>
+      </view> -->
       <view class="battery-msg">
         <text>电池详情:</text>
       </view>
-      <view wx:if="{{battery!=''}}">
+      <!-- <view wx:if="{{battery!=''}}">
         <view wx:for="{{battery}}" wx:key="battery">
           <view class="battery-msg">
             <text>{{item}}</text>
           </view>
+        </view>
+      </view> -->
+      <view wx:if="{{c_device.secondDevice!=''}}">
+        <view wx:for="{{c_device.secondDevice}}" wx:key="secondDevice" class="battery-details">
+          <view class="battery-msg">id:{{item.remark}};</view>
+          <view wx:for="{{item.colsValues}}" wx:key="colsValues">
+           <view class="battery-msg">{{item.columnName}}:{{item[(item.columnValue)]}};</view>
+          </view>
+        </view>
       </view>
     </view>
   </view>
-</view>
 
-<view class="hdqx">
-  <!-- <view class="canvas-view">
+  <!-- <view class="hdqx">
+    <!-- <view class="canvas-view">
     <canvas class="canvas" canvas-id="canvasId"></canvas>
+  </view> 
   </view> -->
-</view>
 </view>

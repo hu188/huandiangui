@@ -2,8 +2,8 @@
 <view class="settings">设置</view>
 <view>
   <i-cell-group>
-    <i-cell title="关于我们" is-link url="/pages/settings/about/about"></i-cell>
-    <i-cell title="评价反馈" is-link url="/pages/settings/feedback/feedback"></i-cell>
+    <i-cell title="公司介绍" is-link url="/pages/settings/about/about"></i-cell>
+    <i-cell title="用户反馈" is-link url="/pages/settings/feedback/feedback"></i-cell>
     <i-cell title="用户协议" is-link url="/pages/settings/userAgreement/userAgreement"></i-cell>
     <i-cell title="押金说明" is-link url="/pages/settings/cash/cash"></i-cell>
     <i-cell title="充值协议" is-link url="/pages/settings/rechargeAgreement/rechargeAgreement"></i-cell>

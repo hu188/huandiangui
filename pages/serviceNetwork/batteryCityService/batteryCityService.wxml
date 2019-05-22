@@ -2,7 +2,7 @@
 <view class="city-Name">{{cityName}}</view>
   <view class="empty"></view>
 <view wx:if="{{carList}}">
-<view wx:for="{{carList}}">
+<view wx:for="{{carList}}" wx:key="{{carlist}}">
  <view class="content">
   <view class="content-left">
     <image src='../../images/battery-orange.png' class="car-img"></image>
