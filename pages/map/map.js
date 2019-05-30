@@ -187,8 +187,56 @@ Page({
     }
     //查询设备
     http('qsq/service/external/deviceData/getDeviceData', JSON.stringify(params), 1, 1).then(res => {
-      
+     
       for (var i = 0; i < res.length; i++) {
+        res[i].iconPath = '../images/battery-d.png';
+        res[i].width = 20;
+        res[i].height = 25;
+        res[i].id = i;
+        res[i].longitude=res[i].location.lon;
+        res[i].latitude = res[i].location.lat;
+        res[i].label = {
+          content: res[i].deviceCount+" " ,
+          anchorX: 5,
+          anchorY: -35,
+          borderWidth: 1,
+          borderColor: '#008BD5',
+          borderRadius: 20,
+          bgColor: "#ffffff",
+          textAlign: 'center',
+          color: '#008BD5',
+          fontSize:10,
+          padding:2
+        }
+        let content = "设备名称：" + res[i].desc
+        var deviceotherinfo = res[i].deviceotherinfo;
+        for (let key in deviceotherinfo) {
+          content += "\n"+key + ":" + deviceotherinfo[key]
+        }
+        content=content
+         res[i].callout = {
+           content: content,
+          color: "#000000",
+          fontSize: "12",
+          borderRadius: "10",
+          bgColor: "#ffffff",
+          padding: "5",
+           display: "BYCLICK"//BYCLICK ALWAYS
+        }
+      }
+      wxMarkerData = res;
+      that.setData({
+        markers:res,
+        // circles: [{
+        //   latitude: that.data.latitude,
+        //   longitude: that.data.longitude,
+        //   color: '#eeeeee',
+        //   fillColor: '#d1edff88',
+        //   radius: 2500,//定位点半径
+
+        // }]
+      })
+     /* for (var i = 0; i < res.length; i++) {
         res[i].iconPath = '../images/battery-d.png';
         res[i].width=20;
         res[i].height=25;
@@ -237,15 +285,16 @@ Page({
       wxMarkerData = res;
       that.setData({
         markers: res,
-        // circles: [{
-        //   latitude: that.data.latitude,
-        //   longitude: that.data.longitude,
-        //   color: '#eeeeee',
-        //   fillColor: '#d1edff88',
-        //   radius: 2500,//定位点半径
+        circles: [{
+          latitude: that.data.latitude,
+          longitude: that.data.longitude,
+          color: '#eeeeee',
+          fillColor: '#d1edff88',
+          radius: 2500,//定位点半径
 
-        // }]
+        }]
       });
+      */
     })
   },
   //获取当前城市
@@ -484,7 +533,7 @@ Page({
     // 终点经纬度
     let latEnd = latitude;
     let lngEnd = longitude;
-    // 终点经纬度 当前位置
+    // 起点经纬度 当前位置
     let latStart = that.data.c_latitude;
     let lngStart = that.data.c_longitude;
     //网络请求设置
@@ -552,6 +601,7 @@ Page({
       wx.scanCode({
         success(res) {
           var urlParam = res.result;
+       
           var urlParams = urlParam.split("&");
           var signParam = urlParams[0].split("=");
           let sign = signParam[1];
@@ -559,6 +609,7 @@ Page({
           that.setData({
             sign: sign,
           })
+           //type标识：0是扫码换电，1是预约换点
           const params = {
             sign: encode({
               sign: sign,
@@ -624,7 +675,7 @@ Page({
                 }
               } else{
                 wx.navigateTo({
-                  url: 'deviceStatus/deviceStatus?status=' + res + "&type=0",
+                  url: 'deviceStatus/deviceStatus?type=0', //status=' + res + "&
                 })
                 http('qtg/service/external/chat/sendScanCodeDate', { sign: sign, type: 0, id: cusId }, 1).then(res => {
                   console.log(res)
@@ -685,121 +736,133 @@ Page({
         url: '../login/login',
       })
     } else {
-      let sign = encodeURI(this.data.c_marker.authInfo);
-    
-          app.globalData.sign=sign
-          that.setData({
-            sign: sign,
-          })
-          const params = {
-            sign: encode({
+      wx.showModal({
+        title: '温馨提示',
+        content: '您确定预约电池吗？',
+        success(res) {
+          if (res.confirm) {
+
+            let sign = encodeURI(that.data.c_marker.auth_info);
+            app.globalData.sign = sign
+            that.setData({
               sign: sign,
-              appid: appid,
-              type:"1"
-            }, sessionId),
-            sessionId: sessionId,
-            params: {
-              sign: sign,
-              appid: appid,
-              type:"1"
+            })
+            //type标识：0是扫码换电，1是预约换点
+            const params = {
+              sign: encode({
+                sign: sign,
+                appid: appid,
+                type: "1"
+              }, sessionId),
+              sessionId: sessionId,
+              params: {
+                sign: sign,
+                appid: appid,
+                type: "1"
+              }
             }
-          }
-          //状态-可用电池数（不包括被预约的电池数）-预约用户ID1|预约用户ID2|…预约用户IDn-换电结果（1表示成功，0表示失败）   0-1-12|15-0 
-          http('qsq/service/external/deviceData/getDeviceStatus', JSON.stringify(params), 1, 1).then(res => {
-           console.log(res)
-            var data = res.split("-");
-            if (data.length > 1) {
-              var orderId = data[2].split("|");
-            }
-            if (data[0] == "0") {
-              if (data[1] == "0") {
-                if (orderId.indexOf(cusId + "") != -1) {
-                  that.setData({
-                    deviceStatus: "您已预约！",
-                    show: true
-                  })
-                  if (timmer) clearTimeout(timmer);
-                  if (that.data.show) {
-                    var timmer = setTimeout(() => {
-                      that.handleHide();
-                      timmer = null;
-                    }, 3000);
+            //0-2-1-12|15 当前设备空闲-命令执行流水号-可以用于换电的电池数是1个，预约用户是12号和15号
+            http('qsq/service/external/deviceData/getDeviceStatus', JSON.stringify(params), 1, 1).then(res => {
+              console.log(res)
+              var data = res.split("-");
+              if (data.length > 3) {
+                var orderId = data[3].split("|");
+              }
+              if (data[0] == "0") {
+                if (data[2] == "0") {
+                  if (orderId.indexOf(cusId + "") != -1) {
+                    that.setData({
+                      deviceStatus: "您已预约！",
+                      show: true
+                    })
+                    if (timmer) clearTimeout(timmer);
+                    if (that.data.show) {
+                      var timmer = setTimeout(() => {
+                        that.handleHide();
+                        timmer = null;
+                      }, 3000);
+                    }
+                  } else {
+                    that.setData({
+                      deviceStatus: "暂无可用电池！",
+                      show: true
+                    })
+                    if (timmer) clearTimeout(timmer);
+                    if (that.data.show) {
+                      var timmer = setTimeout(() => {
+                        that.handleHide();
+                        timmer = null;
+                      }, 3000);
+                    }
                   }
                 } else {
-                  that.setData({
-                    deviceStatus: "暂无可用电池！",
-                    show: true
-                  })
-                  if (timmer) clearTimeout(timmer);
-                  if (that.data.show) {
-                    var timmer = setTimeout(() => {
-                      that.handleHide();
-                      timmer = null;
-                    }, 3000);
+                  if (orderId.indexOf(cusId + "") != -1) {
+                    that.setData({
+                      deviceStatus: "您已预约！",
+                      show: true
+                    })
+                    if (timmer) clearTimeout(timmer);
+                    if (that.data.show) {
+                      var timmer = setTimeout(() => {
+                        that.handleHide();
+                        timmer = null;
+                      }, 3000);
+                    }
+                  } else {
+                    wx.navigateTo({
+                      url: 'deviceStatus/deviceStatus?&type=1',//status=' + res + "
+                    })
+                    http('qtg/service/external/chat/sendScanCodeDate', { sign: sign, type: 1, id: cusId }, 1).then(res => {
+                      console.log(res)
+                    })
                   }
+
+                }
+
+              } else if (data[0] == "1") {
+                that.setData({
+                  deviceStatus: "当前设备正忙，请稍后再进行操作！",
+                  show: true
+                })
+                if (timmer) clearTimeout(timmer);
+                if (that.data.show) {
+                  var timmer = setTimeout(() => {
+                    that.handleHide();
+                    timmer = null;
+                  }, 3000);
+                }
+              } else if (data[0] == "2") {
+                that.setData({
+                  deviceStatus: "当前设备故障，请稍后再进行操作",
+                  show: true
+                })
+                if (timmer) clearTimeout(timmer);
+                if (that.data.show) {
+                  var timmer = setTimeout(() => {
+                    that.handleHide();
+                    timmer = null;
+                  }, 3000);
                 }
               } else {
-                if (orderId.indexOf(cusId + "") != -1) {
-                  that.setData({
-                    deviceStatus: "您已预约！",
-                    show: true
-                  })
-                  if (timmer) clearTimeout(timmer);
-                  if (that.data.show) {
-                    var timmer = setTimeout(() => {
-                      that.handleHide();
-                      timmer = null;
-                    }, 3000);
-                  }
-                }else{
-                  wx.navigateTo({
-                    url: 'deviceStatus/deviceStatus?status=' + res + "&type=1",
-                  })
-                  http('qtg/service/external/chat/sendScanCodeDate', { sign: sign, type: 1, id: cusId }, 1).then(res => {
-                    console.log(res)
-                  })
+                that.setData({
+                  deviceStatus: res,
+                  show: true
+                })
+                if (timmer) clearTimeout(timmer);
+                if (that.data.show) {
+                  var timmer = setTimeout(() => {
+                    that.handleHide();
+                    timmer = null;
+                  }, 3000);
                 }
-
               }
-
-            } else if (data[0] == "1") {
-              that.setData({
-                deviceStatus: "当前设备正忙，请稍后再进行操作！",
-                show: true
-              })
-              if (timmer) clearTimeout(timmer);
-              if (that.data.show) {
-                var timmer = setTimeout(() => {
-                  that.handleHide();
-                  timmer = null;
-                }, 3000);
-              }
-            } else if (data[0] == "2") {
-              that.setData({
-                deviceStatus: "当前设备故障，请稍后再进行操作",
-                show: true
-              })
-              if (timmer) clearTimeout(timmer);
-              if (that.data.show) {
-                var timmer = setTimeout(() => {
-                  that.handleHide();
-                  timmer = null;
-                }, 3000);
-              }
-            } else {
-              that.setData({
-                deviceStatus: res,
-                show: true
-              })
-              if (timmer) clearTimeout(timmer);
-              if (that.data.show) {
-                var timmer = setTimeout(() => {
-                  that.handleHide();
-                  timmer = null;
-                }, 3000);
-              }
-            }
-          })
+            })
+          } else if (res.cancel) {
+            
+          }
+        }
+      })
+      
 
         }
     

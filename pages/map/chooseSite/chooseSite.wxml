@@ -10,7 +10,7 @@
       </view>
       <view class="battery-msg">
         <text>编号:</text>
-        <text>{{c_device.title}}</text>
+        <text>{{c_device.desc}}</text>
       </view>
       <!-- <view class="battery-msg">
       <text>换电高峰:</text>
@@ -31,11 +31,8 @@
         </view>
       </view> -->
       <view wx:if="{{c_device.secondDevice!=''}}">
-        <view wx:for="{{c_device.secondDevice}}" wx:key="secondDevice" class="battery-details">
-          <view class="battery-msg">id:{{item.remark}};</view>
-          <view wx:for="{{item.colsValues}}" wx:key="colsValues">
-           <view class="battery-msg">{{item.columnName}}:{{item[(item.columnValue)]}};</view>
-          </view>
+        <view wx:for="{{c_device.deviceotherinfo}}" wx:key="secondDevice" class="battery-details" wx:for-index='key'>
+          <view class="battery-msg">{{key}}:{{item}};</view>
         </view>
       </view>
     </view>

@@ -85,7 +85,7 @@
       </cover-view>
       <cover-view class='dialog-but'>
         <cover-view class="but" bindtap='toNav'>
-          到这去
+          查看详情
         </cover-view>
       </cover-view>
     </cover-view>

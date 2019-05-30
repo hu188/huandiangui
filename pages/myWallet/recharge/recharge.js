@@ -12,6 +12,7 @@ Page({
     xz: 0,
     czlist: [],
     orderNo:"",//
+    check:false,//是否勾选
   },
 
   /**
@@ -48,39 +49,58 @@ Page({
       xz: a
     });
   },
-  czsave:function(e){
-    const { type, levelTypeId,appid, sessionId, cusId } = app.globalData;
-    const {xz,czlist} = this.data;
-    const item = czlist[xz];
-    const { money, giveMoney } = item
-    const params = {
-      sign: encode({
-        money:money+"",
-        sessionId: sessionId,
-        operateType: '1', 
-        cusId: cusId+"",
-        keyPoolId: appid+"",
-        type: type + "",
-        levelTypeId: levelTypeId + "",
-        rechargeType: "0"
-      }, sessionId),
-      sessionId: sessionId,
-      params: {
-        money: money+"",
-        sessionId: sessionId,
-        operateType: '1',
-        cusId: cusId+"",
-        keyPoolId:appid+"",
-        type: type + "",
-        levelTypeId: levelTypeId + "",
-        rechargeType: "0"
-      }
+  checkboxChange(e){
+    if(e.detail.value=='check'){
+      this.setData({
+        check:true
+      })
+    }else{
+      this.setData({
+        check: false
+      })
     }
-    //生成预支付订单
-    http('qsq/service/external/WeChatUser/savePayOrder', JSON.stringify(params), 1,1).then(res=>{
-      this.pay(res.orderNo);
-    })
+  },
+  czsave:function(e){
+    if(this.data.check==true){
+      const { type, levelTypeId, appid, sessionId, cusId } = app.globalData;
+      const { xz, czlist } = this.data;
+      const item = czlist[xz];
+      const { money, giveMoney } = item
+      const params = {
+        sign: encode({
+          money: money + "",
+          sessionId: sessionId,
+          operateType: '1',
+          cusId: cusId + "",
+          keyPoolId: appid + "",
+          type: type + "",
+          levelTypeId: levelTypeId + "",
+          rechargeType: "0"
+        }, sessionId),
+        sessionId: sessionId,
+        params: {
+          money: money + "",
+          sessionId: sessionId,
+          operateType: '1',
+          cusId: cusId + "",
+          keyPoolId: appid + "",
+          type: type + "",
+          levelTypeId: levelTypeId + "",
+          rechargeType: "0"
+        }
+      }
+      //生成预支付订单
+      http('qsq/service/external/WeChatUser/savePayOrder', JSON.stringify(params), 1, 1).then(res => {
+        this.pay(res.orderNo);
+      })
 
+    }else{
+      $Toast({
+        content: '请先勾选协议',
+        type: 'error'
+      });
+    }
+    
   },
   pay(orderNo){
     const { appid, sessionId, openid } = app.globalData;

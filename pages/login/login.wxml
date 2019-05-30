@@ -22,7 +22,7 @@
       </checkbox-group>
       <view>
         我已阅读，并同意
-        <text style='color:#FF6B00' bindtap='viewAgreement'>《用户注册协议》</text>
+        <text style='color:#FF0000' bindtap='viewAgreement'>【用户注册协议】</text>
       </view>
     </view>
     <button class="btn" formType="submit">登录</button>
