@@ -26,7 +26,6 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
-    console.log(options)
     that.setData({
       status: "查询中",
       queryStatus:"状态查询中...",
@@ -70,7 +69,13 @@ Page({
         }
       }
     
-        http('qsq/service/external/deviceData/getStatus', JSON.stringify(params), 1, 1).then(res => {
+      http('qsq/service/external/deviceData/getStatus', JSON.stringify(params), 1, 1).then(res => {
+         if(res==-1){
+           that.setData({
+             status: "当前电池可以使用",
+             queryStatus: "请求失败，请重试"
+           })
+         }else{
           if (that.data.type == "0") {
             //0-2-1-12|15 当前设备空闲-命令执行流水号-可以用于换电的电池数是1个，预约用户是12号和15号
             var data = res.split("-");
@@ -99,7 +104,7 @@ Page({
                 queryStatus: "预约完成"
               })
               clearTimeout(timer)
-            } else if (that.data.queryTime == 2){
+            } else {// if (that.data.queryTime == 2){
               that.setData({
                 status: data[2]>0?"当前电池柜有可使用的电池":"暂无可用电池",
                 queryStatus: "预约失败,请重试"
@@ -107,10 +112,10 @@ Page({
               clearTimeout(timer)
             }
           }
-
+      }
         })
-      that.queryStatus()
-    }, 8000)
+      //that.queryStatus()
+    }, 5000)
   },
   /**
    * 生命周期函数--监听页面隐藏

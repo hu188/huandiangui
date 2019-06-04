@@ -42,24 +42,26 @@ Page({
       sign: encode({
         money: selectGood.money+"",
         goodName: selectGood.rechargeName,
-        operateType:'1',
+        operateType:'3',
         sessionId: sessionId,
         cusId: cusId + "",
         keyPoolId: appid + "",
         type: type + "",
         levelTypeId: levelTypeId + "",
+        num:1,
         rechargeType:"1"
       }, sessionId),
       sessionId: sessionId,
       params: {
         money: selectGood.money + "",
         goodName: selectGood.rechargeName,
-        operateType: '1',
+        operateType: '3',
         sessionId: sessionId,
         cusId: cusId + "",
         keyPoolId: appid + "",
         type: type + "",
         levelTypeId: levelTypeId + "",
+        num:1,
         rechargeType: "1"
       }
     }

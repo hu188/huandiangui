@@ -1,6 +1,6 @@
 <view class="classtab tb1">
   <i-tabs current="{{ operateTypeRecord }}" color="#FFA500" bindchange="handleChange">
-    <i-tab key="4" title="消费明细"></i-tab>
+    <i-tab key="7" title="消费明细"></i-tab>
     <i-tab key="1" title="充值明细"></i-tab>
     <i-tab key="0" title="换电明细"></i-tab>
   </i-tabs>
@@ -12,7 +12,8 @@
     <view class="item" wx:for="{{orderList}}" wx:key="order">
       <view class="od_top">
         <text>订单编号：{{item.orderNo}}</text>
-        <text>下单时间：{{item.orderTime}}</text>
+        <text>订单时间：{{item.orderTime}}</text>
+        <text wx:if="{{item.goodsRoadName}}">订单详情：套餐【{{item.goodsRoadName}}】</text>
         <text>订单总价：￥{{item.money}}</text>
       </view>
     </view>

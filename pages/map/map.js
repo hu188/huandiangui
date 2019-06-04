@@ -590,140 +590,172 @@ Page({
   },
   //扫码换电
   scanBattery() {
-    const { cusId,sessionId,appid } = app.globalData
+    const { cusId, sessionId, appid ,type, levelTypeId} = app.globalData
     var that = this;
     if (!that.data.isLogin) {
       wx.navigateTo({
         url: '../login/login',
       })
     } else {
-      // 允许从相机和相册扫码
-      wx.scanCode({
-        success(res) {
-          var urlParam = res.result;
-       
-          var urlParams = urlParam.split("&");
-          var signParam = urlParams[0].split("=");
-          let sign = signParam[1];
-          app.globalData.sign = signParam[1];
+      const params = {
+        sign: encode({
+          type: type + "",
+          levelTypeId: levelTypeId + "",
+          sessionId: sessionId,
+          cusId: cusId + ""
+        }, sessionId),
+        sessionId: sessionId,
+        params: {
+          type: type + "",
+          levelTypeId: levelTypeId + "",
+          sessionId: sessionId,
+          cusId: cusId + ""
+        }
+      }
+      http('qsq/service/external/WeChatUser/getMyMeals', JSON.stringify(params), 1, 1).then(res => {
+        if (res!='') {
+          // 允许从相机和相册扫码
+          wx.scanCode({
+            success(res) {
+              var urlParam = res.result;
+
+              var urlParams = urlParam.split("&");
+              var signParam = urlParams[0].split("=");
+              let sign = signParam[1];
+              app.globalData.sign = signParam[1];
+              that.setData({
+                sign: sign,
+              })
+              //type标识：0是扫码换电，1是预约换点
+              const params = {
+                sign: encode({
+                  sign: sign,
+                  appid: appid,
+                  type: "0"
+                }, sessionId),
+                sessionId: sessionId,
+                params: {
+                  sign: sign,
+                  appid: appid,
+                  type: "0"
+                }
+              }
+              //0-2-1-12|15 当前设备空闲-命令执行流水号-可以用于换电的电池数是1个，预约用户是12号和15号
+              http('qsq/service/external/deviceData/getDeviceStatus', JSON.stringify(params), 1, 1).then(res => {
+                console.log(res)
+                var data = res.split("-");
+                if (data.length > 3) {
+                  var orderId = data[3].split("|");
+                }
+                if (data[0] == "0") {
+
+                  if (data[2] == "0") {
+                    if (orderId.indexOf(cusId + "") != -1) {
+                      that.setData({
+                        deviceStatus: "您已预约！",
+                        show: true
+                      })
+                      if (timmer) clearTimeout(timmer);
+                      if (that.data.show) {
+                        var timmer = setTimeout(() => {
+                          that.handleHide();
+                          timmer = null;
+                        }, 3000);
+                      }
+                    } else {
+                      that.setData({
+                        deviceStatus: "暂无可用电池！",
+                        show: true
+                      })
+                      if (timmer) clearTimeout(timmer);
+                      if (that.data.show) {
+                        var timmer = setTimeout(() => {
+                          that.handleHide();
+                          timmer = null;
+                        }, 3000);
+                      }
+                    }
+
+
+                  } else {
+                    if (orderId.indexOf(cusId + "") != -1) {
+                      that.setData({
+                        deviceStatus: "您已预约！",
+                        show: true
+                      })
+                      if (timmer) clearTimeout(timmer);
+                      if (that.data.show) {
+                        var timmer = setTimeout(() => {
+                          that.handleHide();
+                          timmer = null;
+                        }, 3000);
+                      }
+                    } else {
+                      wx.navigateTo({
+                        url: 'deviceStatus/deviceStatus?type=0', //status=' + res + "&
+                      })
+                      http('qtg/service/external/chat/sendScanCodeDate', { sign: sign, type: 0, id: cusId }, 1).then(res => {
+                        console.log(res)
+                      })
+                    }
+                  }
+
+                } else if (data[0] == "1") {
+                  that.setData({
+                    deviceStatus: "当前设备正忙，请稍后再进行操作！",
+                    show: true
+                  })
+                  if (timmer) clearTimeout(timmer);
+                  if (that.data.show) {
+                    var timmer = setTimeout(() => {
+                      that.handleHide();
+                      timmer = null;
+                    }, 3000);
+                  }
+                } else if (data[0] == "2") {
+                  that.setData({
+                    deviceStatus: "当前设备故障，请稍后再进行操作",
+                    show: true
+                  })
+                  if (timmer) clearTimeout(timmer);
+                  if (that.data.show) {
+                    var timmer = setTimeout(() => {
+                      that.handleHide();
+                      timmer = null;
+                    }, 3000);
+                  }
+                } else {
+                  that.setData({
+                    deviceStatus: res,
+                    show: true
+                  })
+                  if (timmer) clearTimeout(timmer);
+                  if (that.data.show) {
+                    var timmer = setTimeout(() => {
+                      that.handleHide();
+                      timmer = null;
+                    }, 3000);
+                  }
+                }
+              })
+
+            }
+          })
+        }else{
           that.setData({
-            sign: sign,
+            deviceStatus: '请先购买套餐再使用该功能！',
+            show: true
           })
-           //type标识：0是扫码换电，1是预约换点
-          const params = {
-            sign: encode({
-              sign: sign,
-              appid: appid,
-              type:"0"
-            }, sessionId),
-            sessionId:sessionId,
-            params: {
-              sign: sign,
-              appid:appid,
-              type:"0"
-            }
+          if (timmer) clearTimeout(timmer);
+          if (that.data.show) {
+            var timmer = setTimeout(() => {
+              that.handleHide();
+              timmer = null;
+            }, 3000);
           }
-          //状态-可用电池数（不包括被预约的电池数）-预约用户ID1|预约用户ID2|…预约用户IDn-换电结果（1表示成功，0表示失败）   0-1-12|15-0 
-          http('qsq/service/external/deviceData/getDeviceStatus', JSON.stringify(params),1,1).then(res => {
-          console.log(res)
-            var data = res.split("-");
-            if(data.length>1){
-              var orderId = data[2].split("|");
-            }
-          if(data[0]=="0"){
-        
-            if (data[1] == "0"){
-              if (orderId.indexOf(cusId + "") != -1) {
-                that.setData({
-                  deviceStatus: "您已预约！",
-                  show: true
-                })
-                if (timmer) clearTimeout(timmer);
-                if (that.data.show) {
-                  var timmer = setTimeout(() => {
-                    that.handleHide();
-                    timmer = null;
-                  }, 3000);
-                }
-              } else{
-                that.setData({
-                  deviceStatus: "暂无可用电池！",
-                  show: true
-                })
-                if (timmer) clearTimeout(timmer);
-                if (that.data.show) {
-                  var timmer = setTimeout(() => {
-                    that.handleHide();
-                    timmer = null;
-                  }, 3000);
-                }
-              }
-
-                
-            }else{
-              if (orderId.indexOf(cusId + "") != -1) {
-                that.setData({
-                  deviceStatus: "您已预约！",
-                  show: true
-                })
-                if (timmer) clearTimeout(timmer);
-                if (that.data.show) {
-                  var timmer = setTimeout(() => {
-                    that.handleHide();
-                    timmer = null;
-                  }, 3000);
-                }
-              } else{
-                wx.navigateTo({
-                  url: 'deviceStatus/deviceStatus?type=0', //status=' + res + "&
-                })
-                http('qtg/service/external/chat/sendScanCodeDate', { sign: sign, type: 0, id: cusId }, 1).then(res => {
-                  console.log(res)
-                })
-              }
-            }
-            
-          }else if(data[0]=="1"){
-            that.setData({
-              deviceStatus:"当前设备正忙，请稍后再进行操作！",
-              show:true
-            })
-             if (timmer) clearTimeout(timmer);
-             if (that.data.show) {
-             var   timmer = setTimeout(() => {
-                 that.handleHide();
-                 timmer = null;
-               }, 3000);
-             }
-          } else if (data[0] == "2"){
-            that.setData({
-              deviceStatus: "当前设备故障，请稍后再进行操作",
-              show: true
-            })
-            if (timmer) clearTimeout(timmer);
-            if (that.data.show) {
-              var timmer = setTimeout(() => {
-                that.handleHide();
-                timmer = null;
-              }, 3000);
-            }
-          }else{
-            that.setData({
-              deviceStatus:res,
-              show: true
-            })
-            if (timmer) clearTimeout(timmer);
-            if (that.data.show) {
-              var timmer = setTimeout(() => {
-                that.handleHide();
-                timmer = null;
-              }, 3000);
-            }
-          }
-          })
-
         }
       })
+    
     }
 
   },
